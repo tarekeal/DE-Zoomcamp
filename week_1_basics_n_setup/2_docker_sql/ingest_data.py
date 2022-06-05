@@ -2,20 +2,9 @@
 # coding: utf-8
 
 import argparse
-<<<<<<< HEAD
-<<<<<<< HEAD
-import pyarrow
-
 from time import time
-
-=======
 import os
 import pyarrow.parquet as pq
->>>>>>> modified README and ingest python script to read from parquet file (#192)
-=======
-import os
-import pyarrow.parquet as pq
->>>>>>> 79a74c227b17b6eb5e6cc8c187da504b3bf55430
 import pandas as pd
 from sqlalchemy import create_engine
 
@@ -28,24 +17,17 @@ def main(params):
     db = params.db
     table_name = params.table_name
     url = params.url
-<<<<<<< HEAD
-<<<<<<< HEAD
+
     csv_name = 'output.csv'
     parquet = 'output.parquet'
     os.system(f"wget {url} -O {parquet}")
 
     parquet_file = pd.read_parquet(parquet)
     parquet_file.to_csv(csv_name, index=False)
-=======
+
     filename = 'output.parquet'
     
     os.system(f"wget {url} -O {filename}")
->>>>>>> modified README and ingest python script to read from parquet file (#192)
-=======
-    filename = 'output.parquet'
-    
-    os.system(f"wget {url} -O {filename}")
->>>>>>> 79a74c227b17b6eb5e6cc8c187da504b3bf55430
 
     engine = create_engine(f'postgresql://{user}:{password}@{host}:{port}/{db}')
     
